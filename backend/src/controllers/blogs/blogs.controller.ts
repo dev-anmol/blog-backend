@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
 import {prisma} from "../../prisma/client";
 
-
+//every blog has a unique id also
 //required fields for all blogs page - image, author, title, description, tags, createDate
 //required fields for single blog page - success, status, message, data(related to that blog) -> id, authorImage, designation, seoDescription, dataOfPublish, updatedAt, title, category, description, isVisible, tags (array), likes
 
@@ -18,7 +18,7 @@ export const createBlog = async (req: Request, res: Response) => {
         category,
         tags,
         dataOfPublish,
-    } = req.body;
+    } = req.body.data;
 
     try {
         const blog = await prisma.blog.create({
@@ -33,8 +33,7 @@ export const createBlog = async (req: Request, res: Response) => {
                 seoDescription,
                 category,
                 tags,
-                dataOfPublish: new Date(dataOfPublish),
-                // Optional fields like likes, isVisible will use defaults
+                dataOfPublish
             },
         });
 

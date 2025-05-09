@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev:debug": "ts-node-dev --inspect --respawn --transpile-only src/index.ts",
     "build": "prisma generate --schema=./src/prisma/schema.prisma && tsc",
     "start": "nodemon dist/index.js",
     "prisma:generate": "prisma generate --schema=./src/prisma/schema.prisma"

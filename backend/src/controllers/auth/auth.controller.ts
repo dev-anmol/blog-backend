@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken'
 
 export const login: RequestHandler = async (req: Request, res: Response) => {
     const {username, password} = req.body;
-
     if (username !== process.env["ADMIN_USERNAME"]) {
         res.status(401).json({message: "Invalid username:("})
         return;
