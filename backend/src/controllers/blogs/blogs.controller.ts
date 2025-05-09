@@ -50,7 +50,6 @@ export const createBlog = async (req: Request, res: Response) => {
 export const getAllBlogs = async (req: Request, res: Response) => {
     try{
         const blogs = await prisma.blog.findMany({});
-        console.log(blogs);
         if(!blogs.length){
             res.json({
                 msg: "no record found"
