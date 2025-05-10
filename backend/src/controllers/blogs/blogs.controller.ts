@@ -60,3 +60,19 @@ export const getAllBlogs = async (req: Request, res: Response) => {
         res.status(404).send(`Error occurred, ${error}`)
     }
 }
+
+export const getBlogById = async (req : Request, res : Response) => {
+  try {
+    console.log("reached here getBlogsById");
+    const blogId: string = req.params.id;
+    console.log(blogId);
+    const blog = await prisma.blog.findUnique({
+        where: {
+            id: blogId
+        }
+    })
+    return res.status(200).json(blog);
+  } catch (error) {
+      res.status(404).send(`Error occurred, ${error}`)
+  }
+}
